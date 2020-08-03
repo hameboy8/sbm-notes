@@ -12,9 +12,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        logger.info("start");
-
-        logger.info("end");
+        logger.info("running hello");
         return "hello moneynote";
     }
 
