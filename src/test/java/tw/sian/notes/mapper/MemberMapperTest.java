@@ -25,7 +25,7 @@ public class MemberMapperTest {
         this.memberMapper = memberMapper;
     }
 
-//    @Test
+    @Test
     public void selectAllTest() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
         List<Member> list = memberMapper.selectAll();

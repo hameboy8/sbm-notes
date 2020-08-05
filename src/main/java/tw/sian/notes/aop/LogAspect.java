@@ -14,18 +14,32 @@ import org.springframework.stereotype.Component;
 public class LogAspect {
 
     @Pointcut("execution(* tw.sian.notes.controller..*(..))")
-    public void pointcut(){};
-
-    @Before("pointcut()")
-    public void beforePointcut(JoinPoint joinPoint){
+    public void controllerPointCut(){};
+    @Before("controllerPointCut()")
+    public void beforeControllerPointCut(JoinPoint joinPoint){
         Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass().getName());
         String methodName = joinPoint.getSignature().getName();
         logger.info(methodName + "() start=====");
     }
-    @After("pointcut()")
-    public void afterPointcut(JoinPoint joinPoint){
+    @After("controllerPointCut()")
+    public void afterControllerPointCut(JoinPoint joinPoint){
         Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass().getName());
         String methodName = joinPoint.getSignature().getName();
         logger.info(methodName + "() end=======");
+    }
+
+    @Pointcut("execution(* tw.sian.notes.mapper..*(..))")
+    public void mapperPointCut(){}
+    @Before("mapperPointCut()")
+    public void beforeMapperPointCut(JoinPoint joinPoint){
+        Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass().getName());
+        String methodName = joinPoint.getSignature().getName();
+        logger.info(methodName + "() start=====mapper");
+    }
+    @After("mapperPointCut()")
+    public void afterMapperPointCut(JoinPoint joinPoint){
+        Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass().getName());
+        String methodName = joinPoint.getSignature().getName();
+        logger.info(methodName + "() end=======mapper");
     }
 }
